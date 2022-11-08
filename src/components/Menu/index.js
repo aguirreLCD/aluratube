@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Search from "./components/Search";
 
+import infinity from "../../../public/images/infinity.png";
+
 const StyledMenu = styled.header`
   display: flex;
   flex-direction: row;
@@ -80,5 +82,7 @@ function Logo() {
         fill="#282828"
       />
     </svg>
+
+    // <img src={infinity.src} />
   );
 }
