@@ -6,7 +6,8 @@ export const CSSReset = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #131313; 
+    background-color: #1E1E1E; 
+    
   }
   body {
     font-family: sans-serif;
@@ -34,7 +35,7 @@ export const CSSReset = createGlobalStyle`
     transition: .3s;
     &:hover,
     &:focus {
-      opacity: .5;
+      opacity: .7;
     }
   }
 `;
