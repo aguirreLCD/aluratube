@@ -11,6 +11,7 @@ export const StyledTimeline = styled.div`
     text-transform: capitalize;
     color: #e5383b;
   }
+  margin-top: 1rem;
   img {
     aspect-ratio: 16/9;
     font-weight: 500;
@@ -40,7 +41,7 @@ export const StyledTimeline = styled.div`
           padding-top: 8px;
           display: block;
           padding-right: 24px;
-          color: ${({ theme }) => theme.textColorBase || "#f5f3f4"};
+          color: ${({ theme }) => theme.textColorBase || "#0B09BA"};
         }
       }
     }

@@ -5,11 +5,12 @@ const StyledSearch = styled.div`
   display: flex;
   flex-direction: row;
   /* border: 1px solid ${({ theme }) => theme.borderBase}; */
-  border: 1px solid ${({ theme }) => theme.borderBase || "#660708"};
+  /* border: 1px solid ${({ theme }) => theme.borderBase || "#660708"}; */
+  border: 1px solid ${({ theme }) => theme.borderBase};
 
   max-width: 425px;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 5px;
   overflow: hidden;
 
   input {
@@ -17,17 +18,17 @@ const StyledSearch = styled.div`
     padding: 4px 6px;
     border: none;
     outline: none;
-    color: ${({ theme }) => theme.textColorBase || "#b1a7a6"};
+    color: ${({ theme }) => theme.textColorBase};
     /* background-color: ${({ theme }) => theme.backgroundBase}; */
-    background-color: ${({ theme }) => theme.backgroundLevel1 || "#161a1d"};
+    background-color: ${({ theme }) => theme.backgroundLevel1};
   }
   button {
     flex: 1;
     cursor: pointer;
     border: none;
-    background-color: ${({ theme }) => theme.backgroundLevel1 || "#161a1d"};
+    background-color: ${({ theme }) => theme.backgroundLevel1};
     box-shadow: 0 1px 0 rgb(0 0 0 / 10%);
-    border-left: 1px solid ${({ theme }) => theme.borderBase || "#660708"};
+    border-left: 1px solid ${({ theme }) => theme.borderBase};
 
     width: 40px;
     height: 40px;
