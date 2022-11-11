@@ -33,10 +33,13 @@
     - Context;
     - Provider;
 
+##### ProviderWrapper -> ThemeProvider -> \_App
+
 <!-- ### Take a look at 3º day results -->
 
 - 4º day
-  - [x]
+  - [x] Create Register Video component;
+  - [x] Create custom hook: useForm();
 
 <!-- ### Take a look at 4º day results -->
 

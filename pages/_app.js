@@ -4,6 +4,7 @@ import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, {
   ColorModeContext,
 } from "../src/components/Menu/components/ColorMode";
+import RegisterVideo from "../src/components/RegisterVideo";
 
 // _app.js -> control the page initialization and:
 // Persist layouts between page changes
@@ -11,6 +12,9 @@ import ColorModeProvider, {
 // Custom error handling using componentDidCatch
 // Inject additional data into pages
 // Add global CSS
+
+// ThemeProvider -> provide global theme
+// ColorModeProvider -> provide global state light or dark mode
 
 const theme = {
   light: {
@@ -39,11 +43,12 @@ function ProviderWrapper(props) {
 
 function MyApp({ Component, pageProps }) {
   const contextMode = React.useContext(ColorModeContext);
-  console.log(contextMode.mode);
+  // console.log(contextMode.mode);
   return (
     <ThemeProvider theme={theme[contextMode.mode]}>
       <CSSReset />
       <Component {...pageProps} />
+      <RegisterVideo />
     </ThemeProvider>
   );
 }
