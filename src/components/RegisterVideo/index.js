@@ -1,19 +1,11 @@
 import React from "react";
 import { StyledRegisterVideo } from "./styles";
 
+import { supabase } from "../../../services/supabaseClient";
+
 // Whiteboarding
 // Custom Hook
 function useForm(formProps) {
-  /*
-    ## What the form needs to work? (user type title and url):    
-    - access / get the data from state:
-        - title;
-        - url ;
-    - submit the data using onSubmit(); 
-    - clear the form;
-    - close form; 
-  */
-
   const [values, setValues] = React.useState(formProps.initialValues);
 
   return {
@@ -28,34 +20,33 @@ function useForm(formProps) {
       });
     },
     clearForm() {
-      setValues({
-        titulo: "",
-        url: "",
-      });
+      setValues({});
     },
   };
 }
-
+// github co-pilot
 // get youtube thumbnail from video url
 function getThumbnail(url) {
   return `https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg`;
 }
 
 // function getVideoId(url) {
-//     const videoId = url.split("v=")[1];
-//     const ampersandPosition = videoId.indexOf("&");
-//     if (ampersandPosition !== -1) {
-//         return videoId.substring(0, ampersandPosition);
-//     }
-//     return videoId;
+//   const videoId = url.split("v=")[1];
+//   const ampersandPosition = videoId.indexOf("&");
+//   if (ampersandPosition !== -1) {
+//     return videoId.substring(0, ampersandPosition);
+//   }
+//   return videoId;
 // }
-
 
 export default function RegisterVideo() {
   const formRegisterVideo = useForm({
-    initialValues: { title: "Video Title", url: "https://youtube.." },
+    initialValues: { title: "title", url: "url" },
   });
   const [formVisible, setFormVisible] = React.useState(true);
+
+  // console.log(supabase);
+  // console.log(supabase.from("video"));
 
   return (
     <StyledRegisterVideo>
@@ -72,6 +63,21 @@ export default function RegisterVideo() {
           onSubmit={(event) => {
             event.preventDefault();
             console.log(formRegisterVideo.values);
+
+            supabase
+              .from("video")
+              .insert({
+                title: formRegisterVideo.values.title,
+                url: formRegisterVideo.values.url,
+                thumbnail: getThumbnail(formRegisterVideo.values.url),
+                playlist: "yoga",
+              })
+              .then((responseSupabase) => {
+                console.log(responseSupabase);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
 
             setFormVisible(false);
             formRegisterVideo.clearForm();

@@ -1,35 +1,50 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-
 import infinity from "../public/images/infinity.png";
-
-// import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
+import { videoService } from "../services/videoService";
 
 function HomePage() {
-  // const stylesHome = { backgroundColor: "gray" };
   // console.log(config.playlists);
-
+  const serviceVideo = videoService();
+  const [playlists, setPlaylists] = React.useState({}); // config.playlists
   const [filterValue, setFilterValue] = React.useState("");
+
+  React.useEffect(() => {
+    console.log("useEffect");
+    serviceVideo.getAllVideos().then((datafromSupabase) => {
+      console.log(datafromSupabase.data);
+      // imutability
+      const newPlaylist = {};
+      datafromSupabase.data.forEach((video) => {
+        if (!newPlaylist[video.playlist]) newPlaylist[video.playlist] = [];
+        newPlaylist[video.playlist] = [video, ...newPlaylist[video.playlist]];
+      });
+
+      console.log("new playlist", newPlaylist);
+      setPlaylists(newPlaylist);
+    });
+    // if data change, do this: empty array == once time run
+  }, []);
+
+  // console.log("playlists", playlists);
 
   return (
     <>
-      {/* <CSSReset /> */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          // backgroundColor: "gray",
         }}
       >
         {/* Prop Drilling */}
         <Menu filterValue={filterValue} setFilterValue={setFilterValue} />
         <Header />
 
-        <Timeline searchedValue={filterValue} playlists={config.playlists}>
+        <Timeline searchedValue={filterValue} playlists={playlists}>
           Content
         </Timeline>
       </div>
@@ -38,12 +53,6 @@ function HomePage() {
 }
 
 export default HomePage;
-
-// function Menu() {
-//   return (
-//       <div>Menu</div>
-//   );
-// }
 
 const StyledHeader = styled.div`
   /* background-color: ${({ theme }) => theme.backgroundLevel1}; */
@@ -62,11 +71,9 @@ const StyledHeader = styled.div`
     gap: 16px;
     color: ${({ theme }) => theme.backgroundLevel3};
   }
-  /* z-index: 1; */
 `;
 
 const StyledBanner = styled.div`
-  /* background-color: blue; */
   background-image: url(${({ bg }) => bg});
   /* background-image: url(${config.bg}); */
   background-repeat: no-repeat;
@@ -97,7 +104,6 @@ function Timeline({ searchedValue, ...props }) {
 
   // console.log(props);
   // console.log(playlistNames);
-
   // for = loop Statement
   // React need: Return by expression (map)
 
@@ -120,7 +126,7 @@ function Timeline({ searchedValue, ...props }) {
                 .map((video) => {
                   return (
                     <a key={video.url} href={video.url}>
-                      <img src={video.thumb} />
+                      <img src={video.thumbnail} />
                       <span>{video.title}</span>
                     </a>
                   );

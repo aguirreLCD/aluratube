@@ -38,12 +38,42 @@
 <!-- ### Take a look at 3º day results -->
 
 - 4º day
+
   - [x] Create Register Video component;
   - [x] Create custom hook: useForm();
+  - [x] ;
+  - [x] ;
+
+    ## What the form needs to work? (user type title and url):
+
+    - access / get the data from state:
+      - title;
+      - url ;
+    - submit the data using onSubmit();
+    - clear the form;
+    - close form;
+    - refresh from supabase;
 
 <!-- ### Take a look at 4º day results -->
 
 - 5º day
-  - [x]
+  - [x] Backend as a service: Supabase;
+  - [x] fetch api;
+  - [x] promisses, async await functions;
+  - [x] Http protocols;
 
 <!-- ### Take a look at 5º day results -->
+
+- Challenges:
+
+  - [x] Update - Realtime;
+  - [x] Playlist as a category to register;
+  - [x] Initial values on register video;
+  - [x] Form validations;
+  - [x] Vercel deploy;
+  - [x] 7 days of code;
+  - [x] Hide supabase keys;
+  - [x] Explore useEffect() solution in React version 18;
+  - [x] improve README.md;
+  - [x] CRUD: implement update and delete;
+  - [x] RLS on Supabase;
