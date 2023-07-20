@@ -70,7 +70,7 @@ export default function RegisterVideo() {
                 title: formRegisterVideo.values.title,
                 url: formRegisterVideo.values.url,
                 thumbnail: getThumbnail(formRegisterVideo.values.url),
-                playlist: "yoga",
+                playlist: "cycling",
               })
               .then((responseSupabase) => {
                 console.log(responseSupabase);
@@ -79,8 +79,8 @@ export default function RegisterVideo() {
                 console.log(err);
               });
 
-            setFormVisible(false);
             formRegisterVideo.clearForm();
+            setFormVisible(false);
           }}
         >
           <div>
@@ -92,7 +92,7 @@ export default function RegisterVideo() {
               X
             </button>
             <input
-              placeholder="video title"
+              placeholder="title"
               name="title"
               value={formRegisterVideo.values.title}
               onChange={formRegisterVideo.handleChange}

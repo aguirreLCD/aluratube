@@ -12,11 +12,21 @@ function HomePage() {
   const [playlists, setPlaylists] = React.useState({}); // config.playlists
   const [filterValue, setFilterValue] = React.useState("");
 
+  // const newPlaylist = { ...playlists };
+  // res.data.forEach((video) => {
+  //   if (video.playlist in newPlaylist) {
+  //     newPlaylist[video.playlist].push(video);
+  //   } else {
+  //     newPlaylist[video.playlist] = [video];
+  //   }
+  // });
+  // setPlaylists(newPlaylist);
+
   React.useEffect(() => {
     console.log("useEffect");
     serviceVideo.getAllVideos().then((datafromSupabase) => {
       console.log(datafromSupabase.data);
-      // imutability
+      // imutability ->
       const newPlaylist = {};
       datafromSupabase.data.forEach((video) => {
         if (!newPlaylist[video.playlist]) newPlaylist[video.playlist] = [];
@@ -125,7 +135,7 @@ function Timeline({ searchedValue, ...props }) {
                 })
                 .map((video) => {
                   return (
-                    <a key={video.url} href={video.url}>
+                    <a key={video.url} href={video.url} target="_blank">
                       <img src={video.thumbnail} />
                       <span>{video.title}</span>
                     </a>
