@@ -41,8 +41,6 @@
 
   - [x] Create Register Video component;
   - [x] Create custom hook: useForm();
-  - [x] ;
-  - [x] ;
 
     ## What the form needs to work? (user type title and url):
 
@@ -67,13 +65,12 @@
 - Challenges:
 
   - [x] Update - Realtime;
-  - [x] Playlist as a category to register;
-  - [x] Initial values on register video;
-  - [x] Form validations;
-  - [x] Vercel deploy;
-  - [x] 7 days of code;
-  - [x] Hide supabase keys;
-  - [x] Explore useEffect() solution in React version 18;
-  - [x] improve README.md;
-  - [x] CRUD: implement update and delete;
-  - [x] RLS on Supabase;
+  - [ ] Add Playlist values as a category to register;
+  - [ ] show/hide Initial values on register video;
+  - [ ] Form validations;
+  - [ ] Hide keys;
+  - [ ] Explore useEffect() solution in React version >18;
+  - [ ] Improve README.md;
+  - [ ] CRUD: implement update and delete;
+  - [ ] RLS on Supabase;
+  - [ ] Vercel deploy;
